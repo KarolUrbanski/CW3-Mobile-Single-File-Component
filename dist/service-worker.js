@@ -5,6 +5,7 @@ var cacheFiles = [
    "images/music.png",
    "images/physics.png",
    "images/plant.png",
+   "images/plant-192.png",
    "images/english.png",
    "images/history.png",
 ];
