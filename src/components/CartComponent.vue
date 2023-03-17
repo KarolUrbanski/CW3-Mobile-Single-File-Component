@@ -15,7 +15,7 @@
                         <input class="basketbt" type="button" value="Remove" v-on:click="remove(item)" />
                     </div>
                 </div>
-                <div class="form">
+                <!-- <div class="form">
 
                 <div class="input-container">
                     <input type="text" id="name" placeholder=" " v-model="checkout.name">
@@ -31,7 +31,7 @@
                 </div>
                 <button v-on:click="placeOrder()" type="button" class="basketbt">Place order</button>
                 
-            </div>
+            </div> -->
             </div>
         </div>
       </div>

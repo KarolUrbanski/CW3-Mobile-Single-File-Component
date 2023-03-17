@@ -122,7 +122,11 @@ export default {
 
   },
   created: function(){
+    if ("serviceWorker" in navigator) {
+              navigator.serviceWorker.register("service-worker.js");
+        }
     this.getLessons();
+    
         }
 };
 </script>
