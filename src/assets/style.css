@@ -29,6 +29,11 @@
   margin: 10px;
   width: 45%;
   }
+  .searchBox{
+    position: absolute !important;
+    top: 50px !important;
+    right: 10px !important;
+  }
 }
 @media (max-width: 620px) {
   .lesson-box {
@@ -36,6 +41,7 @@
   margin: 10px;
   width: 100%;
   }
+
 }
 #img{
   width: 75%;

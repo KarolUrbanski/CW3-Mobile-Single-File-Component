@@ -5,7 +5,7 @@ import CartComponent from "./components/CartComponent.vue";
 
 <template>
   <div id="app">
-    <header>
+    <header >
       <h1>{{ sitename }}</h1>
       <button id="cartBTN" @click="showCheckout">{{ this.cart.length }} 
             <font-awesome-icon icon="fa-solid fa-cart-shopping" />
@@ -134,6 +134,7 @@ export default {
 <style scoped>
 header {
   line-height: 1.5;
+  height: 100px;
 }
 #cartBTN{
 cursor:pointer;
@@ -151,6 +152,7 @@ background-color: transparent;
     display: flex;
     place-items: center;
     padding-right: calc(var(--section-gap) / 2);
+
   }
 
   header .wrapper {
