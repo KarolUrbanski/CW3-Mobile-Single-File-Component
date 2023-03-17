@@ -21,7 +21,8 @@ import CartComponent from "./components/CartComponent.vue";
     </header>
 
     <main>
-      <component :is="currentView" :lessons="lessons" :imageURL="imageURL" @to-Basket="toBasket">
+      <component :is="currentView" :lessons="lessons" :imageURL="imageURL" @to-Basket="toBasket"
+      :cart="cart" :totalPrice="totalPrice" @removE="remove">
       </component>
     </main>
   </div>
@@ -58,6 +59,18 @@ export default {
         this.currentView = ItemsComponent;
       }
     },
+    remove: function (subjec) {
+                    //for every element in order
+                    for (var i = 0; i < this.cart.length; i++) {
+                        //check for first id to remove
+                        if (this.cart[i] == subjec) {
+                            //remove subject/count add spaces and return to not remove all the same objects
+                            this.cart.splice(i, 1);
+                            subjec.space += 1;
+                            return
+                        }
+                    }
+                },
 
     getLessons () {
       let webstore=this;
@@ -98,6 +111,14 @@ export default {
             }
   },
   computed: {
+    totalPrice: function () {
+                    //calculate total price
+                    let total = 0;
+                    this.cart.forEach(subj => {
+                        total = total + subj.price;
+                    });
+                    return total;
+                },
 
   },
   created: function(){
