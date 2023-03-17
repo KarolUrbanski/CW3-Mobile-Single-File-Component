@@ -7,7 +7,7 @@ import TheWelcome from "./components/TheWelcome.vue";
   <div id="app">
     <header>
       <h1>{{ sitename }}</h1>
-      <button @click="showCheckout">{{ this.cart.length }} Checkout</button>
+      <button @click="showCheckout">{{ this.cart.length }} Checkout :)</button>
       <img
         alt="Vue logo"
         class="logo"
