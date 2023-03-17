@@ -14,13 +14,28 @@
 }
 
 .lesson-box {
-    width: 200px;
+  min-width: 300px;
+  width: 30%;
+  height: 400px;
     display: flex;
-    align-items: left;
     justify-content: center;
     border: 2px solid lightblue;
-    margin: 20px;
+    margin: 15px;
     padding: 20px;
+}
+@media (max-width: 1024px) {
+  .lesson-box {
+  min-width: 100px;
+  margin: 10px;
+  width: 45%;
+  }
+}
+@media (max-width: 620px) {
+  .lesson-box {
+  min-width: 100px;
+  margin: 10px;
+  width: 100%;
+  }
 }
 #img{
   width: 75%;
@@ -41,7 +56,6 @@
   float: right;
   text-align: center;
   font-size: larger;
-  margin-top: -20px;
 }
 
   .cont-mini {

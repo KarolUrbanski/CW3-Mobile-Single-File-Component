@@ -9,12 +9,16 @@
                         v-bind:src="imageURL+lesson.topic+'.png'" />
                 </div>
                 <div class="right">
-                    <p>Topic: <b>{{ lesson.topic }}</b></p>
-                    <p>Location: <b>{{ lesson.location }}</b></p>
-                    <p>Price: <b>{{ lesson.price }}</b></p>
+                    <p>Topic: <h2>{{ lesson.topic }}</h2></p>
+
+                    <p>Location: <h2>{{ lesson.location }}</h2></p>
+
+                    <p>Price: <h2>{{ lesson.price }}</h2></p>
+
                     <p v-if="lesson.space <= 0">No more spaces!</p>
                     <p v-else-if="lesson.space <= 5">Only<b> {{lesson.space}}</b> spaces!</p>
-                    <p v-else> Spaces:<b> {{lesson.space}}</b></p>
+                    <p v-else> Spaces:<h2> {{lesson.space}}</h2></p>
+
                     <input class="basketbt" type="button" value="Add to Basket" v-on:click="toBasket(lesson)"
                         v-if="lesson.space > 0" />
                     <input class="basketbt" type="button" value="Add to Basket" disabled="disabled" v-else />
@@ -32,6 +36,11 @@ export default{
   data(){
     return{}
   },
+  methods: {
+    toBasket:function (lesson){ 
+      this.$emit("to-Basket",lesson);
+    }
+  }
 }
 </script>
 <style scoped>
@@ -45,16 +54,12 @@ h3 {
   font-size: 1.2rem;
 }
 
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
 
 @media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    display: block;
-    text-align: left;
+  .basketbt{
+    position: absolute;
+    bottom: 0px;
+    right: 30px;
   }
 }
 </style>

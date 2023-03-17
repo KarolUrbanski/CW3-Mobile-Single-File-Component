@@ -21,7 +21,7 @@ import CartComponent from "./components/CartComponent.vue";
     </header>
 
     <main>
-      <component :is="currentView" :lessons="lessons" :imageURL="imageURL">
+      <component :is="currentView" :lessons="lessons" :imageURL="imageURL" @to-Basket="toBasket">
       </component>
     </main>
   </div>
@@ -43,6 +43,13 @@ export default {
 
   components: { ItemsComponent, CartComponent },
   methods: {
+    toBasket: function (subjec) {
+                    //add subject to basker array
+                    this.cart.push(subjec);
+                    this.cart.count += 1;
+                    subjec.space -= 1;
+                },
+
     showCheckout() {
       if (this.currentView === ItemsComponent) {
         this.currentView = CartComponent;
@@ -51,6 +58,7 @@ export default {
         this.currentView = ItemsComponent;
       }
     },
+
     getLessons () {
       let webstore=this;
       let searchStringLower = this.searchString.toLowerCase();
