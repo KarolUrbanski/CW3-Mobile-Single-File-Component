@@ -1,0 +1,225 @@
+@import "./base.css";
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+
+  font-weight: normal;
+}
+.lesson-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+}
+
+.lesson-box {
+    width: 200px;
+    display: flex;
+    align-items: left;
+    justify-content: center;
+    border: 2px solid lightblue;
+    margin: 20px;
+    padding: 20px;
+}
+#img{
+  width: 75%;
+  -webkit-box-sizing: border-box;
+  padding: 10px;
+  background-color: #e498b5;
+  border-radius: 20px;
+  float: left;
+}
+.left{
+  width: 150px;
+  float: left;
+  text-align: center;
+  height:100%;
+}
+.right{
+  width: 50%;
+  float: right;
+  text-align: center;
+  font-size: larger;
+  margin-top: -20px;
+}
+
+  .cont-mini {
+    width: 85%;
+    height: 70px;
+    border-radius: 10px;
+    background-color: #0d002b;
+    padding: 10px;
+    float: left;
+    margin: 10px;
+    margin-left: 5%;
+    text-align: center;
+    border: 1px solid #c4c7c8;
+  
+  }
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    float: right;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    color: #f1f1f1;
+    text-align: center;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: -20;
+    left: -25px;
+    font-size: 36px;
+    margin: 10px;
+  }
+  .basketbt{
+    float: right;
+    background-color: #EA4C89;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 30px;
+    line-height: 15px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+  }
+  .basketbt:hover,
+  .basketbt:focus {
+    background-color: #F082AC;
+  }
+  .basketbt:disabled{
+    background-color: #da83a4b6;
+  }
+
+  .form{
+    width: 85%;
+    margin-left: 5%;
+
+  }
+  /* checkout Form */
+.input-container {
+  text-align: left;
+  flex-direction: column-reverse;
+}
+.input-container>label {
+  position: relative;
+  top: -35px;
+  left: 20px;
+  padding: 0px 10px 0px 10px;
+  text-align: left;
+  font-size: large;
+  user-select: none;
+  background: #0d002b;
+  white-space: nowrap;
+  width: fit-content;
+  pointer-events: none;
+  transition: 0.4s;
+}
+
+.input-container>input {
+  display: block;
+  width: 90%;
+  height: 40px;
+  text-align: left;
+  font-size: large;
+  line-height: 1.42857143;
+  background-color: #0d002b;
+  border: 1px solid #c4c7c8;
+  color: #c4c7c8;
+  box-shadow: none;
+  padding-left: 30px;
+
+}
+
+/* Line for moving lablel when input is clicked or there is something typed in it */
+.input-container>input:focus+label,
+.input-container>input:not(:placeholder-shown)~label {
+  transform: scale(0.95)  !important;
+  top: -55px;
+  left: 5px;
+  color: #F082AC;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+/* search section */
+.searchBox {
+  position: absolute;
+  top: 0;
+  right: 150px;
+  background-color: #353535;
+  border-radius: 40px;
+  transition: 0.4s;
+}
+.searchBox:hover{
+  background-color: #242424;
+}
+
+.searchBox:hover > .searchInput {
+  width: 240px;
+  padding: 0 6px;
+}
+
+.searchBox:hover > .searchButton {
+  background-color: #777777;
+}
+
+.searchButton {
+  float: right;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.4s;
+  border: none;
+  background-color: #353535;
+  border-radius: 40px;
+}
+
+.searchInput {
+  border:none;
+  background: none;
+  outline:none;
+  float:left;
+  padding: 0;
+  color: black;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 40px;
+  width: 0px;
+
+}
+.searchInput:not(:placeholder-shown) {
+  width: 240px;
+  padding: 0 6px;
+  background-color: #c4c4c4;
+  border-radius: 40px;
+  
+}

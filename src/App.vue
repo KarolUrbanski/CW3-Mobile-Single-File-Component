@@ -1,26 +1,27 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import TheWelcome from "./components/TheWelcome.vue";
+import ItemsComponent from "./components/ItemsComponent.vue";
+import CartComponent from "./components/CartComponent.vue";
 </script>
 
 <template>
   <div id="app">
     <header>
       <h1>{{ sitename }}</h1>
-      <button @click="showCheckout">{{ this.cart.length }} Checkout :)</button>
-      <img
-        alt="Vue logo"
-        class="logo"
-        src="./assets/logo.svg"
-        width="125"
-        height="125"
-      />
+      <button id="cartBTN" @click="showCheckout">{{ this.cart.length }} 
+            <font-awesome-icon icon="fa-solid fa-cart-shopping" />
+            Cart
+          </button>
+
+          <div class="searchBox">
+              <input class="searchInput" type="text" placeholder="Search" v-model.trim="searchString" @keyup="getLessons">
+              <button class="searchButton" href="#">
+                <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+              </button>
+            </div>
     </header>
 
     <main>
-      
-      <component :is="currentView">
-        
+      <component :is="currentView" :lessons="lessons" :imageURL="imageURL">
       </component>
     </main>
   </div>
@@ -30,23 +31,70 @@ export default {
   name: "App",
   data() {
     return {
-      sitename: "Vue.js Pet Depot",
+      sitename: "After School Club",
+      lessons: [],
+      searchString: '',
+      serverURL:"https://webstoreapp-env.eba-z8zi99ic.us-east-1.elasticbeanstalk.com/lessons/products",
+      imageURL:"https://webstoreapp-env.eba-z8zi99ic.us-east-1.elasticbeanstalk.com/static/",
       cart: [],
-      currentView: HelloWorld
+      currentView: ItemsComponent
     }
   },
 
-  components: { HelloWorld, HelloWorld },
+  components: { ItemsComponent, CartComponent },
   methods: {
     showCheckout() {
-      if (this.currentView === HelloWorld) {
-        this.currentView = TheWelcome;
+      if (this.currentView === ItemsComponent) {
+        this.currentView = CartComponent;
       }
       else {
-        this.currentView = HelloWorld;
+        this.currentView = ItemsComponent;
       }
-    }
-  }
+    },
+    getLessons () {
+      let webstore=this;
+      let searchStringLower = this.searchString.toLowerCase();
+      console.log(searchStringLower)
+
+                if (!searchStringLower) {
+                fetch(this.serverURL, {
+                    method: 'GET',
+                    //  mode: 'no-cors',
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                }).then(
+                    function (response) {
+                        response.json().then(function (json) {
+                            webstore.lessons=json;
+                        })
+                    }
+                )
+                }
+                else{
+            fetch(this.serverURL+"/"+searchStringLower, {
+                    method: 'GET',
+                    //  mode: 'no-cors',
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                }).then(
+                    function (response) {
+                        response.json().then(function (json) {
+                          webstore.lessons=json;
+                        })
+                    }
+                )
+ 
+            }
+            }
+  },
+  computed: {
+
+  },
+  created: function(){
+    this.getLessons();
+        }
 };
 </script>
 
@@ -54,10 +102,15 @@ export default {
 header {
   line-height: 1.5;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+#cartBTN{
+cursor:pointer;
+font-size:24px;
+position: absolute;
+right: 10px;
+top:5px;
+border: none;
+color: white;
+background-color: transparent;
 }
 
 @media (min-width: 1024px) {
@@ -67,14 +120,13 @@ header {
     padding-right: calc(var(--section-gap) / 2);
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
   header .wrapper {
     display: flex;
     place-items: flex-start;
     flex-wrap: wrap;
   }
+  #cartBTN{
+font-size:28px;
+}
 }
 </style>
